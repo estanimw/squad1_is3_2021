@@ -1,11 +1,10 @@
-from django.shortcuts import render
-
 # Create your views here.
 
-from django.views import View
-from .models import Task
-from django.http import JsonResponse
 from django.forms.models import model_to_dict
+from django.http import JsonResponse
+from django.views import View
+
+from .models import Task
 
 
 class TaskView(View):

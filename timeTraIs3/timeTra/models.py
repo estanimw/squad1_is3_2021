@@ -9,3 +9,6 @@ class Task(models.Model):
     description = models.CharField(max_length=500)
     starting_date = models.DateField()
     estimated_time = models.IntegerField()
+    # UserID/ImportID
+
+
