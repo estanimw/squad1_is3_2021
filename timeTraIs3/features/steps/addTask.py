@@ -1,4 +1,4 @@
-from ...timeTra.models import *
+import timeTra.models
 
 
 '''
@@ -14,10 +14,10 @@ def step_impl(context):
 
 @when('the user adds the task with all the values')
 def step_impl(context):
-    task = Task(name=context.samples[0]['name'],
-                description=context.samples[0]['description'],
-                starting_date=context.samples[0]['starting_date'],
-                estimated_time=context.samples[0]['estimated_time'])
+    task = models.Task(name=context.samples[0]['name'],
+                       description=context.samples[0]['description'],
+                       starting_date=context.samples[0]['starting_date'],
+                       estimated_time=context.samples[0]['estimated_time'])
     context.task = task
 
 

@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'timeTra',
-    'drf_yasg'
+    'behave_django'
 ]
 
 MIDDLEWARE = [
