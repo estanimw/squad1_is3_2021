@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
                 ('id', models.IntegerField(primary_key=True, serialize=False)),
                 ('name', models.CharField(max_length=25)),
                 ('description', models.CharField(max_length=500)),
-                ('starting_date', models.DateField()),
+                ('starting_date', models.IntegerField()),
                 ('estimated_time', models.IntegerField()),
             ],
         ),
