@@ -18,45 +18,13 @@ def index(request):
 
 @api_view(['POST'])
 def task_create(request):
-
-    # data = request.data
-    # task = Task.objects.create(**data)
-    # return Response(task)
-
-    try: name = request.data['name']
-    except: name = None
-
-    try: description = request.data['description']
-    except: description = None
-
-    try: starting_date = request.data['starting_date']
-    except: starting_date = None
-
-    try: estimated_time = request['estimated_time']
-    except: estimated_time = None
-
-    try: time_spent = request.data['time_spent']
-    except: time_spent = None
-
-    try: state = request.data['state']
-    except: state = None
-    #return Response(**(request.data))
     try:
-        task = Task(
-            name=name,
-            description=description,
-            starting_date=starting_date,
-            estimated_time=estimated_time,
-            time_spent=time_spent,
-            )
-        data = request.data
-        #return Response(request.data)
-        task = Task.objects.create(**(request.data))
-        return Response(request.data)
+        task = Task(**request.data)
         task.save()
         return Response(status=status.HTTP_201_CREATED)
     except Exception as e:
-        return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response(status = status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['GET'])
 def task_list(request):
