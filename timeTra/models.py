@@ -31,6 +31,7 @@ class Task(models.Model):
     def getAllTasks(cls):
         return cls.tasks.filter()
 
+
     def modifyTask(self, **argsToChange):
         keys = argsToChange.keys()
         for arg in keys:
