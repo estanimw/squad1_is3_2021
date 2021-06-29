@@ -60,11 +60,10 @@ def task_create(request):
 
 @api_view(['GET'])
 def task_list(request):
-    return Response(list(Task.getAllTasks().values()))
     try:
-        task_list = list(Task.tasks.all())
+        task_list = list(Task.getAllTasks().values())
         if len(task_list)>0:
-            return Response(task_list, status=status.HTTP_204_NO_CONTENT)
+            return Response(task_list, status=status.HTTP_200_OK)
         else:
             return Response(status=status.HTTP_204_NO_CONTENT)
     except Exception as e:

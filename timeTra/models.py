@@ -35,7 +35,10 @@ class Task(models.Model):
     def modifyTask(self, **argsToChange):
         keys = argsToChange.keys()
         for arg in keys:
-            setattr(self, arg, argsToChange[arg])
+            if arg == 'state' and self.time_spent < self.estimated_time:
+                raise Exception("La tarea debe tener todos los campos requeridos.")
+            else:
+                setattr(self, arg, argsToChange[arg])
         return self
 
     def __eq__(self, other):

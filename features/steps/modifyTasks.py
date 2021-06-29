@@ -38,3 +38,17 @@ def step_impl(context):
     taskSaved = taskSet.first()
     assert context.originalTask == context.modifiedTask
     assert context.originalTask == taskSaved
+
+@when(u'that user wants to fininsh it')
+def step_impl(context):
+    context.exception = ""
+    try:
+        context.task = context.originalTask.modifyTask(state = "Completed")
+        context.modifiedTask = context.task
+    except Exception as e:
+        context.exception = str(e)
+
+@then(u'the following warning should be shown')
+def step_impl(context):
+    assert context.exception == context.table[0]['warning']
+    
