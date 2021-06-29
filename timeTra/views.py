@@ -9,11 +9,11 @@ from .models import Task
 
 class TaskView(View):
     def get(self, request):
-        task_list = list(Task.objects.all().values())
+        task_list = list(Task.tasks.all())
         return JsonResponse(task_list, safe=False)
 
 
 class TaskDetailView(View):
     def get(self, request, pk):
-        task = (Task.objects.get(pk=pk))
+        task = (Task.objects.get(id=pk))
         return JsonResponse(model_to_dict(task), safe=False)
