@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '7_k9b*+=56kw4gyjle9w)l3s#b0p(-!z&vhs!f*h9vzczr457c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['arcane-refuge-32679.herokuapp.com']
 
