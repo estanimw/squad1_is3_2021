@@ -23,23 +23,51 @@ def task_create(request):
         task.save()
         return Response(status=status.HTTP_201_CREATED)
     except Exception as e:
-        return Response(status = status.HTTP_400_BAD_REQUEST)
+        if str(e) == "La tarea ya existe.":
+            return Response(status = status.HTTP_409_CONFLICT)
+        else:
+            return Response(status = status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET'])
 def task_list(request):
-    try:
-        task_list = list(Task.getAllTasks().values())
-        if len(task_list)>0:
-            return Response(task_list, status=status.HTTP_200_OK)
-        else:
+    task_list = Task.getAllTasks()
+    if len(task_list)>0:
+        return Response(task_list, status=status.HTTP_200_OK)
+    else:
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET','PUT'])
+def task(request,id):
+    method = request.method
+    if method == 'GET':
+        return task_detail(request, id)
+    elif method == 'PUT':
+        return task_edit(request, id)
+
+
+
+
+def task_detail(request,id):
+    task = Task.getAllTasks().filter(id=id)
+    if task:
+        return Response(task, status=status.HTTP_200_OK)
+    else:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+
+def task_edit(request,id):
+    taskSet = Task.tasks.filter(id=id)
+    task = taskSet.first()
+
+    if task:
+        try:
+            (request.data).pop('id', None)
+            task = task.modifyTask(**(request.data))
+            task.save()
             return Response(status=status.HTTP_204_NO_CONTENT)
-    except Exception as e:
-        return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
-
-class TaskDetailView(View):
-    def get(self, request, pk):
-        task = (Task.objects.get(id=pk))
-        return JsonResponse(model_to_dict(task), safe=False)
+        except Exception as e:
+            return Response({'message': str(e)},status = status.HTTP_400_BAD_REQUEST)
+    else:
+        return Response(status=status.HTTP_404_NOT_FOUND)

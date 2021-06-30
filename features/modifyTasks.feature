@@ -20,6 +20,7 @@ Feature: Modify task attributes
     Then the following warning is shown
       | warning |
       | La tarea debe tener todos los campos requeridos.|
+
   Scenario: Modifying task state without spending enough time
     Given A user with the following task
       | name | description | starting_date | estimated_time | time_spent | state |
@@ -27,7 +28,8 @@ Feature: Modify task attributes
     When that user wants to fininsh it
     Then the following warning should be shown
       | warning |
-      |La tarea debe tener todos los campos requeridos.|
+      | No es posible modificar el estado. |
+
   Scenario: Modifying task state when is possible
     Given A user with the following task
       | name | description | starting_date | estimated_time | time_spent | state |

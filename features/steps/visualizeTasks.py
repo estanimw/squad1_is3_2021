@@ -21,7 +21,8 @@ def step_impl(context):
 
 @then(u'all his tasks are shown')
 def step_impl(context):
-    taskSet = Task.getAllTasks()
+    taskSet =Task.tasks.filter()
     for task in taskSet:
+        print(type(taskSet))
         assert task in context.tasks
     assert len(taskSet) == len(context.tasks)
