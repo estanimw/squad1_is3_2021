@@ -9,7 +9,6 @@ class Task(models.Model):
     description = models.CharField(max_length=140)
     starting_date = models.IntegerField()
     estimated_time = models.IntegerField()
-    time_spent = models.IntegerField(default=0, blank=False)
     STATES = [
         ('Created', 'Created'),
         ('Paused', 'Paused'),
@@ -55,6 +54,5 @@ class Task(models.Model):
 
     def __eq__(self, other):
         return isinstance(other, Task) and self.name == other.name and self.description == other.description and int(self.starting_date) == int(
-            other.starting_date) and int(self.estimated_time) == int(other.estimated_time) and int(
-            self.time_spent) == int(other.time_spent) and self.state == other.state
+            other.starting_date) and int(self.estimated_time) == int(other.estimated_time) and self.state == other.state
 

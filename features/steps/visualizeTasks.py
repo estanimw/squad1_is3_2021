@@ -13,7 +13,6 @@ def step_impl(context):
                     description=row['description'],
                     starting_date=row['starting_date'],
                     estimated_time=row['estimated_time'],
-                    time_spent=row['time_spent'],
                     state=row['state'])
         task.save()
         context.tasks.append(task)
