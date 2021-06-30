@@ -18,6 +18,6 @@ Feature: Modify task attributes
     When that user deletes one
       | id |
       | 2 |
-    Then the following warning should be shown
+    Then the following warning is shown
       | warning |
       | La tarea a eliminar no existe.|

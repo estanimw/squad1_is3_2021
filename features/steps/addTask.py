@@ -37,7 +37,10 @@ def step_impl(context):
         starting_date=context.samples[0]['starting_date'],
         estimated_time=context.samples[0]['estimated_time'])
     context.task = task
-    print(task.description)
+    try:
+        context.task.save()
+    except Exception as e:
+        context.exception = str(e)
 
 
 
@@ -53,15 +56,12 @@ def step_impl(context):
         description=context.samples[0]['description'],
         starting_date=context.samples[0]['starting_date'])
     context.task = task
-
-
-
-
-
-@then(u'the following warning is shown')
-def step_impl(context):
     try:
         context.task.save()
     except Exception as e:
         context.exception = str(e)
+
+
+@then(u'the following warning is shown')
+def step_impl(context):
     assert context.exception == context.table[0]['warning']
