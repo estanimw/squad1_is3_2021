@@ -7,7 +7,6 @@ def step_impl(context):
                        description=context.samples[0]['description'],
                        starting_date=context.samples[0]['starting_date'],
                        estimated_time=context.samples[0]['estimated_time'],
-                       time_spent=context.samples[0]['time_spent'],
                        state=context.samples[0]['state'])
     context.task = task
     task.save()
@@ -23,7 +22,6 @@ def step_impl(context):
     assert taskSaved.description == taskModel['description']
     assert taskSaved.starting_date == int(taskModel['starting_date'])
     assert taskSaved.estimated_time == int(taskModel['estimated_time'])
-    assert taskSaved.time_spent == int(taskModel['time_spent'])
     assert taskSaved.state == taskModel['state']
     assert taskSaved is not None
     taskSet.delete()
@@ -55,11 +53,6 @@ def step_impl(context):
         description=context.samples[0]['description'],
         starting_date=context.samples[0]['starting_date'])
     context.task = task
-    '''
-    sourceFile = open('/Users/estanimw/demo.txt', 'w')
-    print(task.state, file = sourceFile)
-    sourceFile.close()
-    '''
 
 
 
