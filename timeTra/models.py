@@ -49,10 +49,7 @@ class Task(models.Model):
     def modifyTask(self, **argsToChange):
         keys = argsToChange.keys()
         for arg in keys:
-            if arg == 'state' and self.time_spent < self.estimated_time:
-                raise Exception("No es posible modificar el estado.")
-            else:
-                setattr(self, arg, argsToChange[arg])
+            setattr(self, arg, argsToChange[arg])
         return self
 
 

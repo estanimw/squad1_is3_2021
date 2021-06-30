@@ -6,7 +6,6 @@ def step_impl(context):
                 description=context.table[0]['description'],
                 starting_date=context.table[0]['starting_date'],
                 estimated_time=context.table[0]['estimated_time'],
-                time_spent=context.table[0]['time_spent'],
                 state=context.table[0]['state'])
     context.originalTask = task
     task.save()
@@ -19,13 +18,11 @@ def step_impl(context):
                                 description=context.table[0]['description'],
                                 starting_date=context.table[0]['starting_date'],
                                 estimated_time=context.table[0]['estimated_time'],
-                                time_spent=context.table[0]['time_spent'],
                                 state=context.table[0]['state']) #id = None
     context.task = task.modifyTask(name=context.table[0]['name'],
                     description=context.table[0]['description'],
                     starting_date=context.table[0]['starting_date'],
                     estimated_time=context.table[0]['estimated_time'],
-                    time_spent=context.table[0]['time_spent'],
                     state=context.table[0]['state'])
 
 
