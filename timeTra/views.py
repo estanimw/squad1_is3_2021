@@ -37,14 +37,15 @@ def task_list(request):
     else:
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-@api_view(['GET','PUT'])
+@api_view(['GET','PUT','DELETE'])
 def task(request,id):
     method = request.method
     if method == 'GET':
         return task_detail(request, id)
     elif method == 'PUT':
         return task_edit(request, id)
-
+    elif method == 'DELETE':
+        return task_delete(request, id)
 
 
 
@@ -55,6 +56,14 @@ def task_detail(request,id):
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
+
+def task_delete(request,id):
+    task = Task.getAllTasks().filter(id=id)
+    try:
+        Task.delete(id)
+        return Response(status=status.HTTP_200_OK)
+    except Exception as e:
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 def task_edit(request,id):

@@ -50,5 +50,6 @@ def step_impl(context):
 
 @then(u'the following warning should be shown')
 def step_impl(context):
+    print(Task.getAllTasks())
     assert context.exception == context.table[0]['warning']
     

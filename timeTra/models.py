@@ -19,6 +19,7 @@ class Task(models.Model):
     state = models.CharField(max_length=11, default="Created", choices=STATES)
     tasks = models.Manager()
 
+
     def save(self, *arg, **args):
         if self.name == None or self.starting_date == None or self.name == '' or self.starting_date == '':
             print("HOLA")
@@ -36,6 +37,15 @@ class Task(models.Model):
         return cls.tasks.values()
 
 
+    @classmethod
+    def delete(cls,id):
+        task = cls.tasks.filter(id=id)
+        if len(task) == 0:
+            raise Exception("La tarea a eliminar no existe.")
+        else:
+            task.delete()
+
+
     def modifyTask(self, **argsToChange):
         keys = argsToChange.keys()
         for arg in keys:
@@ -44,6 +54,7 @@ class Task(models.Model):
             else:
                 setattr(self, arg, argsToChange[arg])
         return self
+
 
     def __eq__(self, other):
         return isinstance(other, Task) and self.name == other.name and self.description == other.description and int(self.starting_date) == int(
