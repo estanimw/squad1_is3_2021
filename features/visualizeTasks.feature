@@ -1,5 +1,5 @@
 Feature: Visualize tasks
-  As an employee, I want to visualize my tasks so that I can see what tasks I worked on
+  As a user, I want to visualize my tasks so that I can see what tasks I worked on
 
   Scenario: visualize tasks
     Given a user

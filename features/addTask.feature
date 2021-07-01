@@ -1,6 +1,5 @@
 Feature: addTask
-  As an employee i want to add a task
-  so that i can organize my schedule.
+  As user I want to be able to create a task so that I can define with detail my toDo's
 
 
   Scenario: Add a task with all fields

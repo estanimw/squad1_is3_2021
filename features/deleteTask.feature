@@ -1,5 +1,5 @@
 Feature: Modify task attributes
-  As an employee, I want to delete a task just because.
+  As a user I want to be able to eliminate a task so that I can remove it from the task's list
 
   Scenario: Delete a task
     Given A user with the following tasks

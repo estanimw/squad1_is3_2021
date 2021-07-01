@@ -1,5 +1,5 @@
 Feature: Modify task attributes
-  As an employee, I want to modify a task so I can change it details.
+  As a user I want to be able to edit a task so that I can change it's details.
 
   Scenario: Modify task with valid values
     Given A user with the following task
