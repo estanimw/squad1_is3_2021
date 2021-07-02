@@ -7,7 +7,7 @@ class Task(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=25)
     description = models.CharField(max_length=140)
-    starting_date = models.IntegerField()
+    starting_date = models.BigIntegerField()
     estimated_time = models.IntegerField()
     STATES = [
         ('Created', 'Created'),
