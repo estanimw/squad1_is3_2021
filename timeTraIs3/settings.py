@@ -56,7 +56,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'timeTraIs3.urls'
 
-x
+CORS_ORIGIN_ALLOW_ALL = True
 
 TEMPLATES = [
     {
